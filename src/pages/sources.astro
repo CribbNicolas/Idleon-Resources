@@ -1,0 +1,369 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import { Card } from '../components/ui/card';
+import { Badge } from '../components/ui/badge';
+import { Button } from '../components/ui/button';
+
+const sources = [
+  {
+    title: "Comprehensive Game Data",
+    description: "Detailed spreadsheet with complete game information and statistics",
+    url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vSCepYAs6sNDP4iq6MJNAG1pvFXzfC_3IQ7ttt5vfEEKAgQhIk4cQqnLRyeH6UyqDSuP4R-6WQeDmmP/pubhtml#",
+    type: "Spreadsheet",
+    icon: "📊"
+  },
+  {
+    title: "Advanced Calculations",
+    description: "Complex calculations and optimization tools for advanced players",
+    url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vST3HcgBgeq8H9jztaMhUXZAAAHl120PvDVo_48qJpn6n9qnpa-TWmuG_kN9cmtr66M-OtO482XIOAk/pubhtml#",
+    type: "Calculator",
+    icon: "🧮"
+  },
+  {
+    title: "Character Build Guide",
+    description: "Detailed character building guide with stats and recommendations",
+    url: "https://docs.google.com/spreadsheets/u/0/d/1Up72ofyNjWr3pXIvGwTw6SAYcBSO6N6wJnVtHNGVpRU/htmlview#gid=1729072791",
+    type: "Guide",
+    icon: "🎯"
+  },
+  {
+    title: "Efficiency Optimizer",
+    description: "Optimization tools and efficiency calculators for resource management",
+    url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQHKsA7L-VGS5_JCJeLPUiFJ8mvooLaVRUpkq5t3aeu-rkEPgjZJhjX39t5spXU5jjfixN4SwjXjo08/pubhtml#",
+    type: "Tools",
+    icon: "⚡"
+  },
+  {
+    title: "Character Creation Guide",
+    description: "Reddit community guide for character creation and class selection",
+    url: "https://www.reddit.com/r/idleon/comments/161z81u/character_creation_and_class_selection/",
+    type: "Community",
+    icon: "👥"
+  }
+];
+---
+
+<Layout title="Fuentes - Idleon Resources" description="Comprehensive collection of Idleon resources including spreadsheets, calculators, and community guides">
+	<Header />
+	
+	<main class="main">
+		<section class="hero">
+			<div class="hero-content">
+				<div class="hero-badge">
+					<span class="badge-text">📚 Resources</span>
+				</div>
+				<h1 class="hero-title">
+					<span class="highlight">Fuentes</span>
+				</h1>
+				<p class="hero-description">
+					Fuentes varias de información, excels muy útiles para tener una idea clara de que prestar atención
+				</p>
+			</div>
+		</section>
+		
+		<section class="content-section">
+			<div class="container">
+				<div class="intro-section">
+					<Card class="intro-card">
+						<div class="intro-icon">🎯</div>
+						<h2>Recursos Esenciales</h2>
+						<p>
+							Esta colección incluye las mejores fuentes de información para Legends of Idleon. 
+							Desde hojas de cálculo detalladas hasta guías de la comunidad, encontrarás todo lo 
+							necesario para optimizar tu experiencia de juego.
+						</p>
+					</Card>
+				</div>
+				
+				<div class="sources-grid">
+					{sources.map((source, index) => (
+						<Card class="source-card">
+							<div class="source-header">
+								<div class="source-icon">{source.icon}</div>
+								<div class="source-info">
+									<h3 class="source-title">{source.title}</h3>
+									<Badge variant="secondary" class="source-badge">{source.type}</Badge>
+								</div>
+							</div>
+							<p class="source-description">{source.description}</p>
+							<div class="source-footer">
+								<Button as="a" href={source.url} target="_blank" rel="noopener noreferrer" variant="outline">
+									Abrir Recurso
+									<span class="external-icon">↗</span>
+								</Button>
+							</div>
+						</Card>
+					))}
+				</div>
+				
+				<div class="tips-section">
+					<h2 class="section-title">Consejos para Usar las Fuentes</h2>
+					<div class="tips-grid">
+						<div class="tip">
+							<div class="tip-icon">💡</div>
+							<h3>Organización</h3>
+							<p>Marca tus recursos favoritos para acceso rápido y organiza por tipo de contenido</p>
+						</div>
+						<div class="tip">
+							<div class="tip-icon">🔄</div>
+							<h3>Actualizaciones</h3>
+							<p>Revisa regularmente las fuentes ya que se actualizan con nueva información del juego</p>
+						</div>
+						<div class="tip">
+							<div class="tip-icon">📱</div>
+							<h3>Móvil</h3>
+							<p>Muchas hojas de cálculo funcionan bien en dispositivos móviles para consulta rápida</p>
+						</div>
+						<div class="tip">
+							<div class="tip-icon">🤝</div>
+							<h3>Comunidad</h3>
+							<p>Contribuye con la comunidad compartiendo tus propios descubrimientos y estrategias</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+</Layout>
+
+<style>
+	.main {
+		min-height: 100vh;
+	}
+	
+	.hero {
+		padding: 4rem 2rem;
+		text-align: center;
+		background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+		backdrop-filter: blur(10px);
+		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	}
+	
+	.hero-content {
+		max-width: 800px;
+		margin: 0 auto;
+	}
+	
+	.hero-badge {
+		display: inline-block;
+		background: rgba(255, 255, 255, 0.2);
+		border: 1px solid rgba(255, 255, 255, 0.3);
+		border-radius: 50px;
+		padding: 0.5rem 1rem;
+		margin-bottom: 2rem;
+		backdrop-filter: blur(10px);
+	}
+	
+	.badge-text {
+		color: white;
+		font-size: 0.9rem;
+		font-weight: 500;
+	}
+	
+	.hero-title {
+		font-size: clamp(2.5rem, 5vw, 4rem);
+		font-weight: 800;
+		color: white;
+		margin: 0 0 1.5rem 0;
+		line-height: 1.1;
+	}
+	
+	.highlight {
+		background: linear-gradient(135deg, #ff6b6b, #ffd93d);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
+	
+	.hero-description {
+		font-size: 1.25rem;
+		color: rgba(255, 255, 255, 0.9);
+		margin: 0;
+		line-height: 1.6;
+	}
+	
+	.content-section {
+		padding: 4rem 2rem;
+		background: rgba(255, 255, 255, 0.05);
+	}
+	
+	.container {
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+	
+	.intro-section {
+		margin-bottom: 4rem;
+	}
+	
+	.intro-card {
+		background: rgba(255, 255, 255, 0.1) !important;
+		border: 1px solid rgba(255, 255, 255, 0.2) !important;
+		backdrop-filter: blur(10px);
+		padding: 2rem;
+		border-radius: 12px;
+		text-align: center;
+		max-width: 600px;
+		margin: 0 auto;
+	}
+	
+	.intro-icon {
+		font-size: 3rem;
+		margin-bottom: 1rem;
+	}
+	
+	.intro-card h2 {
+		font-size: 1.75rem;
+		font-weight: 600;
+		color: white;
+		margin: 0 0 1rem 0;
+	}
+	
+	.intro-card p {
+		color: rgba(255, 255, 255, 0.8);
+		margin: 0;
+		line-height: 1.6;
+		font-size: 1.1rem;
+	}
+	
+	.sources-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+		gap: 2rem;
+		margin-bottom: 4rem;
+	}
+	
+	.source-card {
+		background: rgba(255, 255, 255, 0.1) !important;
+		border: 1px solid rgba(255, 255, 255, 0.2) !important;
+		backdrop-filter: blur(10px);
+		padding: 1.5rem;
+		border-radius: 12px;
+		transition: transform 0.3s ease;
+	}
+	
+	.source-card:hover {
+		transform: translateY(-5px);
+		background: rgba(255, 255, 255, 0.15) !important;
+	}
+	
+	.source-header {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		margin-bottom: 1rem;
+	}
+	
+	.source-icon {
+		font-size: 2rem;
+		width: 60px;
+		height: 60px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: rgba(255, 255, 255, 0.1);
+		border-radius: 12px;
+		border: 1px solid rgba(255, 255, 255, 0.2);
+	}
+	
+	.source-info {
+		flex: 1;
+	}
+	
+	.source-title {
+		font-size: 1.25rem;
+		font-weight: 600;
+		color: white;
+		margin: 0 0 0.5rem 0;
+	}
+	
+	.source-badge {
+		background: rgba(255, 255, 255, 0.2) !important;
+		color: white !important;
+		border: 1px solid rgba(255, 255, 255, 0.3) !important;
+	}
+	
+	.source-description {
+		color: rgba(255, 255, 255, 0.8);
+		margin: 0 0 1.5rem 0;
+		line-height: 1.5;
+	}
+	
+	.source-footer {
+		display: flex;
+		justify-content: flex-end;
+	}
+	
+	.external-icon {
+		transition: transform 0.3s ease;
+	}
+	
+	.source-footer button:hover .external-icon {
+		transform: translateX(2px) translateY(-2px);
+	}
+	
+	.tips-section {
+		margin-top: 4rem;
+	}
+	
+	.section-title {
+		font-size: 2.5rem;
+		font-weight: 700;
+		color: white;
+		text-align: center;
+		margin: 0 0 3rem 0;
+	}
+	
+	.tips-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		gap: 2rem;
+	}
+	
+	.tip {
+		background: rgba(255, 255, 255, 0.1);
+		border: 1px solid rgba(255, 255, 255, 0.2);
+		backdrop-filter: blur(10px);
+		padding: 2rem;
+		border-radius: 12px;
+		text-align: center;
+		transition: transform 0.3s ease;
+	}
+	
+	.tip:hover {
+		transform: translateY(-5px);
+	}
+	
+	.tip-icon {
+		font-size: 2.5rem;
+		margin-bottom: 1rem;
+	}
+	
+	.tip h3 {
+		font-size: 1.25rem;
+		font-weight: 600;
+		color: white;
+		margin: 0 0 1rem 0;
+	}
+	
+	.tip p {
+		color: rgba(255, 255, 255, 0.8);
+		margin: 0;
+		line-height: 1.5;
+	}
+	
+	@media (max-width: 768px) {
+		.hero {
+			padding: 2rem 1rem;
+		}
+		
+		.content-section {
+			padding: 2rem 1rem;
+		}
+		
+		.sources-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>
