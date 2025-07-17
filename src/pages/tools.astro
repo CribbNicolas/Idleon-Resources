@@ -1,0 +1,485 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import { Card } from '../components/ui/card';
+import { Badge } from '../components/ui/badge';
+import { Button } from '../components/ui/button';
+
+const toolCategories = [
+  {
+    title: "Calculators",
+    description: "Herramientas de cálculo para optimizar tu progreso",
+    icon: "🧮",
+    tools: [
+      { name: "Damage Calculator", description: "Calcula el daño óptimo para tus builds" },
+      { name: "Skill Efficiency", description: "Optimiza la eficiencia de tus habilidades" },
+      { name: "Resource Planner", description: "Planifica el uso de recursos" }
+    ]
+  },
+  {
+    title: "Trackers",
+    description: "Seguimiento de progreso y estadísticas",
+    icon: "📊",
+    tools: [
+      { name: "Progress Tracker", description: "Rastrea tu progreso en el juego" },
+      { name: "Achievement Monitor", description: "Monitorea tus logros" },
+      { name: "Quest Tracker", description: "Sigue el progreso de misiones" }
+    ]
+  },
+  {
+    title: "Planners",
+    description: "Herramientas de planificación estratégica",
+    icon: "📋",
+    tools: [
+      { name: "Build Planner", description: "Planifica tus builds de personajes" },
+      { name: "Route Optimizer", description: "Optimiza rutas de farming" },
+      { name: "Time Manager", description: "Gestiona tu tiempo de juego" }
+    ]
+  },
+  {
+    title: "Utilities",
+    description: "Utilidades generales para mejorar la experiencia",
+    icon: "🛠️",
+    tools: [
+      { name: "Inventory Manager", description: "Gestiona tu inventario eficientemente" },
+      { name: "Market Analyzer", description: "Analiza precios del mercado" },
+      { name: "Guild Tools", description: "Herramientas para gestión de guild" }
+    ]
+  }
+];
+---
+
+<Layout title="Herramientas - Idleon Tools" description="Comprehensive collection of tools and utilities for Legends of Idleon players">
+	<Header />
+	
+	<main class="main">
+		<section class="hero">
+			<div class="hero-content">
+				<div class="hero-badge">
+					<span class="badge-text">🛠️ Tools</span>
+				</div>
+				<h1 class="hero-title">
+					<span class="highlight">Herramientas</span>
+				</h1>
+				<p class="hero-description">
+					Webs de herramientas para el juego - Optimiza tu experiencia con las mejores utilidades
+				</p>
+			</div>
+		</section>
+		
+		<section class="content-section">
+			<div class="container">
+				<div class="intro-section">
+					<Card class="intro-card">
+						<div class="intro-icon">⚡</div>
+						<h2>Herramientas Esenciales</h2>
+						<p>
+							Descubre una colección completa de herramientas diseñadas para mejorar tu experiencia 
+							en Legends of Idleon. Desde calculadoras hasta planificadores, encuentra todo lo que 
+							necesitas para optimizar tu gameplay.
+						</p>
+					</Card>
+				</div>
+				
+				<div class="tools-grid">
+					{toolCategories.map((category) => (
+						<Card class="category-card">
+							<div class="category-header">
+								<div class="category-icon">{category.icon}</div>
+								<div class="category-info">
+									<h3 class="category-title">{category.title}</h3>
+									<p class="category-description">{category.description}</p>
+								</div>
+							</div>
+							
+							<div class="tools-list">
+								{category.tools.map((tool) => (
+									<div class="tool-item">
+										<h4 class="tool-name">{tool.name}</h4>
+										<p class="tool-description">{tool.description}</p>
+									</div>
+								))}
+							</div>
+							
+							<div class="category-footer">
+								<Button variant="outline" class="category-button">
+									Explorar Herramientas
+									<span class="button-arrow">→</span>
+								</Button>
+							</div>
+						</Card>
+					))}
+				</div>
+				
+				<div class="features-section">
+					<h2 class="section-title">¿Por qué usar herramientas?</h2>
+					<div class="features-grid">
+						<div class="feature">
+							<div class="feature-icon">⚡</div>
+							<h3>Eficiencia</h3>
+							<p>Optimiza tu tiempo y recursos con cálculos precisos y planificación estratégica</p>
+						</div>
+						<div class="feature">
+							<div class="feature-icon">📈</div>
+							<h3>Progreso</h3>
+							<p>Acelera tu progreso con herramientas que te ayudan a tomar mejores decisiones</p>
+						</div>
+						<div class="feature">
+							<div class="feature-icon">🎯</div>
+							<h3>Precisión</h3>
+							<p>Obtén resultados exactos con calculadoras y analizadores especializados</p>
+						</div>
+						<div class="feature">
+							<div class="feature-icon">🤝</div>
+							<h3>Comunidad</h3>
+							<p>Herramientas creadas por y para la comunidad de jugadores</p>
+						</div>
+					</div>
+				</div>
+				
+				<div class="coming-soon">
+					<Card class="coming-soon-card">
+						<div class="coming-soon-icon">🚀</div>
+						<h2>Próximamente</h2>
+						<p>
+							Estamos trabajando en nuevas herramientas y funcionalidades. 
+							¡Mantente atento a las actualizaciones!
+						</p>
+						<div class="coming-soon-features">
+							<Badge variant="secondary">Mobile App</Badge>
+							<Badge variant="secondary">API Integration</Badge>
+							<Badge variant="secondary">Real-time Updates</Badge>
+						</div>
+					</Card>
+				</div>
+			</div>
+		</section>
+	</main>
+</Layout>
+
+<style>
+	.main {
+		min-height: 100vh;
+	}
+	
+	.hero {
+		padding: 4rem 2rem;
+		text-align: center;
+		background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+		backdrop-filter: blur(10px);
+		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	}
+	
+	.hero-content {
+		max-width: 800px;
+		margin: 0 auto;
+	}
+	
+	.hero-badge {
+		display: inline-block;
+		background: rgba(255, 255, 255, 0.2);
+		border: 1px solid rgba(255, 255, 255, 0.3);
+		border-radius: 50px;
+		padding: 0.5rem 1rem;
+		margin-bottom: 2rem;
+		backdrop-filter: blur(10px);
+	}
+	
+	.badge-text {
+		color: white;
+		font-size: 0.9rem;
+		font-weight: 500;
+	}
+	
+	.hero-title {
+		font-size: clamp(2.5rem, 5vw, 4rem);
+		font-weight: 800;
+		color: white;
+		margin: 0 0 1.5rem 0;
+		line-height: 1.1;
+	}
+	
+	.highlight {
+		background: linear-gradient(135deg, #ff6b6b, #ffd93d);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
+	
+	.hero-description {
+		font-size: 1.25rem;
+		color: rgba(255, 255, 255, 0.9);
+		margin: 0;
+		line-height: 1.6;
+	}
+	
+	.content-section {
+		padding: 4rem 2rem;
+		background: rgba(255, 255, 255, 0.05);
+	}
+	
+	.container {
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+	
+	.intro-section {
+		margin-bottom: 4rem;
+	}
+	
+	.intro-card {
+		background: rgba(255, 255, 255, 0.1) !important;
+		border: 1px solid rgba(255, 255, 255, 0.2) !important;
+		backdrop-filter: blur(10px);
+		padding: 2rem;
+		border-radius: 12px;
+		text-align: center;
+		max-width: 600px;
+		margin: 0 auto;
+	}
+	
+	.intro-icon {
+		font-size: 3rem;
+		margin-bottom: 1rem;
+	}
+	
+	.intro-card h2 {
+		font-size: 1.75rem;
+		font-weight: 600;
+		color: white;
+		margin: 0 0 1rem 0;
+	}
+	
+	.intro-card p {
+		color: rgba(255, 255, 255, 0.8);
+		margin: 0;
+		line-height: 1.6;
+		font-size: 1.1rem;
+	}
+	
+	.tools-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+		gap: 2rem;
+		margin-bottom: 4rem;
+	}
+	
+	.category-card {
+		background: rgba(255, 255, 255, 0.1) !important;
+		border: 1px solid rgba(255, 255, 255, 0.2) !important;
+		backdrop-filter: blur(10px);
+		padding: 1.5rem;
+		border-radius: 12px;
+		transition: transform 0.3s ease;
+		display: flex;
+		flex-direction: column;
+	}
+	
+	.category-card:hover {
+		transform: translateY(-5px);
+		background: rgba(255, 255, 255, 0.15) !important;
+	}
+	
+	.category-header {
+		display: flex;
+		align-items: flex-start;
+		gap: 1rem;
+		margin-bottom: 1.5rem;
+	}
+	
+	.category-icon {
+		font-size: 2rem;
+		width: 60px;
+		height: 60px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: rgba(255, 255, 255, 0.1);
+		border-radius: 12px;
+		border: 1px solid rgba(255, 255, 255, 0.2);
+		flex-shrink: 0;
+	}
+	
+	.category-info {
+		flex: 1;
+	}
+	
+	.category-title {
+		font-size: 1.25rem;
+		font-weight: 600;
+		color: white;
+		margin: 0 0 0.5rem 0;
+	}
+	
+	.category-description {
+		color: rgba(255, 255, 255, 0.8);
+		margin: 0;
+		line-height: 1.5;
+		font-size: 0.9rem;
+	}
+	
+	.tools-list {
+		flex: 1;
+		margin-bottom: 1.5rem;
+	}
+	
+	.tool-item {
+		padding: 0.75rem 0;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	}
+	
+	.tool-item:last-child {
+		border-bottom: none;
+	}
+	
+	.tool-name {
+		font-size: 1rem;
+		font-weight: 500;
+		color: white;
+		margin: 0 0 0.25rem 0;
+	}
+	
+	.tool-description {
+		color: rgba(255, 255, 255, 0.7);
+		margin: 0;
+		font-size: 0.85rem;
+		line-height: 1.4;
+	}
+	
+	.category-footer {
+		display: flex;
+		justify-content: center;
+	}
+	
+	.category-button {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+	}
+	
+	.button-arrow {
+		transition: transform 0.3s ease;
+	}
+	
+	.category-button:hover .button-arrow {
+		transform: translateX(4px);
+	}
+	
+	.features-section {
+		margin-bottom: 4rem;
+	}
+	
+	.section-title {
+		font-size: 2.5rem;
+		font-weight: 700;
+		color: white;
+		text-align: center;
+		margin: 0 0 3rem 0;
+	}
+	
+	.features-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		gap: 2rem;
+	}
+	
+	.feature {
+		background: rgba(255, 255, 255, 0.1);
+		border: 1px solid rgba(255, 255, 255, 0.2);
+		backdrop-filter: blur(10px);
+		padding: 2rem;
+		border-radius: 12px;
+		text-align: center;
+		transition: transform 0.3s ease;
+	}
+	
+	.feature:hover {
+		transform: translateY(-5px);
+	}
+	
+	.feature-icon {
+		font-size: 2.5rem;
+		margin-bottom: 1rem;
+	}
+	
+	.feature h3 {
+		font-size: 1.25rem;
+		font-weight: 600;
+		color: white;
+		margin: 0 0 1rem 0;
+	}
+	
+	.feature p {
+		color: rgba(255, 255, 255, 0.8);
+		margin: 0;
+		line-height: 1.5;
+	}
+	
+	.coming-soon {
+		margin-top: 4rem;
+	}
+	
+	.coming-soon-card {
+		background: rgba(255, 255, 255, 0.1) !important;
+		border: 1px solid rgba(255, 255, 255, 0.2) !important;
+		backdrop-filter: blur(10px);
+		padding: 3rem;
+		border-radius: 12px;
+		text-align: center;
+		max-width: 600px;
+		margin: 0 auto;
+	}
+	
+	.coming-soon-icon {
+		font-size: 4rem;
+		margin-bottom: 1rem;
+	}
+	
+	.coming-soon-card h2 {
+		font-size: 2rem;
+		font-weight: 600;
+		color: white;
+		margin: 0 0 1rem 0;
+	}
+	
+	.coming-soon-card p {
+		color: rgba(255, 255, 255, 0.8);
+		margin: 0 0 2rem 0;
+		line-height: 1.6;
+		font-size: 1.1rem;
+	}
+	
+	.coming-soon-features {
+		display: flex;
+		justify-content: center;
+		gap: 1rem;
+		flex-wrap: wrap;
+	}
+	
+	.coming-soon-features .badge {
+		background: rgba(255, 255, 255, 0.2) !important;
+		color: white !important;
+		border: 1px solid rgba(255, 255, 255, 0.3) !important;
+	}
+	
+	@media (max-width: 768px) {
+		.hero {
+			padding: 2rem 1rem;
+		}
+		
+		.content-section {
+			padding: 2rem 1rem;
+		}
+		
+		.tools-grid {
+			grid-template-columns: 1fr;
+		}
+		
+		.coming-soon-features {
+			flex-direction: column;
+			align-items: center;
+		}
+	}
+</style>

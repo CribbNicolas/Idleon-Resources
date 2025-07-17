@@ -1,0 +1,564 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import { Card } from '../components/ui/card';
+import { Badge } from '../components/ui/badge';
+import { Button } from '../components/ui/button';
+
+const characterRoutes = [
+  {
+    order: 1,
+    class: "⚔️ Warrior",
+    subclass: "Barbarian → Blood Berserker",
+    description: "Excelente para abrir portales y pushing inicial. Muy buen rendimiento en pesca activa (W2).",
+    role: "Pushing inicial, Pesca activa",
+    icon: "⚔️"
+  },
+  {
+    order: 2,
+    class: "🔮 Mage",
+    subclass: "Shaman → Bubonic Conjuror",
+    description: "Desbloquea Alchemy temprano, vital en W2. No necesitás más de un Bubo.",
+    role: "Alchemy, Desbloqueo W2",
+    icon: "🔮"
+  },
+  {
+    order: 3,
+    class: "🏹 Archer",
+    subclass: "Bowman → Siege Breaker",
+    description: "Desbloquea Catching en W2. Muy buen farmeador activo.",
+    role: "Catching, Farming activo",
+    icon: "🏹"
+  },
+  {
+    order: 4,
+    class: "⚒️ Warrior",
+    subclass: "Squire → Divine Knight",
+    description: "Necesario para Construction en W3. Subilo para ponerlo en el Cog Board cuanto antes.",
+    role: "Construction, Cog Board",
+    icon: "⚒️"
+  },
+  {
+    order: 5,
+    class: "🐺 Archer",
+    subclass: "Hunter → Beast Master",
+    description: "Brutal en juego activo (triple shot, boost a damage). El mejor pusher hasta W3.",
+    role: "Pushing, Damage activo",
+    icon: "🐺"
+  },
+  {
+    order: 6,
+    class: "⚡ Mage",
+    subclass: "Wizard → Elemental Sorcerer",
+    description: "Soul gain, worship y double deity linking. Sube niveles rapidísimo si jugás activamente.",
+    role: "Souls, Worship, Leveling",
+    icon: "⚡"
+  },
+  {
+    order: 7,
+    class: "🧱 Warrior",
+    subclass: "Squire → Divine Knight (2)",
+    description: "Para boostear Construction y Gaming aún más. Más útil que un segundo BB en mid/late game.",
+    role: "Construction avanzada",
+    icon: "🧱"
+  },
+  {
+    order: 8,
+    class: "🔥 Mage",
+    subclass: "Wizard → Elemental Sorcerer (2)",
+    description: "Mejor samples, worship y soul gain que 2x Bubo. Potenciado por juego activo.",
+    role: "Samples, Worship avanzado",
+    icon: "🔥"
+  },
+  {
+    order: 9,
+    class: "🛡️ Archer",
+    subclass: "Bowman → Siege Breaker (2)",
+    description: "Mejor que duplicar Beast Master. Mejores impresiones y utilidad general.",
+    role: "Utilidad general",
+    icon: "🛡️"
+  },
+  {
+    order: 10,
+    class: "🧙‍♂️ Beginner",
+    subclass: "Journeyman → Maestro",
+    description: "Dejalo para el final. Subida de niveles muy lenta, puede trabarte una quest en W5. Vital para talentos de producción en W1–W3.",
+    role: "Talentos de producción",
+    icon: "🧙‍♂️"
+  }
+];
+
+const classDistribution = [
+  { class: "Warrior", count: 3, subclasses: "2x DK, 1x BB", role: "Construcción, Minería, Pesca activa" },
+  { class: "Mage", count: 3, subclasses: "2x ES, 1x Bubo", role: "Souls, Alchemy, Worship, Samples" },
+  { class: "Archer", count: 3, subclasses: "2x SB, 1x BM", role: "Catching, Trapping, Farming activo" },
+  { class: "Beginner", count: 1, subclasses: "1x Maestro", role: "Talentos de producción, utilidades" }
+];
+
+const tips = [
+  "Prioritizá clases activas para tus horas semanales: BM, SB, ES, BB.",
+  "Mantené un personaje pushing constante (idealmente BM o SB).",
+  "No dupliques Maestro.",
+  "No dejes a DK sin subirle los niveles, clave para Construction y Gaming.",
+  "Cuando llegues a W3: re-hacé equipo con mejores piedras de upgrade.",
+  "A medio/largo plazo, 2x ES rinde más que 2x Bubo."
+];
+---
+
+<Layout title="Ruta de Personajes - Idleon Character Routes" description="Optimal character progression route for Legends of Idleon players with 10-15 hours of active play per week">
+	<Header />
+	
+	<main class="main">
+		<section class="hero">
+			<div class="hero-content">
+				<div class="hero-badge">
+					<span class="badge-text">🎯 Character Guide</span>
+				</div>
+				<h1 class="hero-title">
+					<span class="highlight">Ruta de Personajes</span>
+				</h1>
+				<p class="hero-description">
+					🧭 IdleOn - Hoja de Ruta Óptima (10-15h/semana activas)
+				</p>
+				<p class="hero-subtitle">
+					Optimizado para jugadores que dedican entre <strong>10 y 15 horas semanales de juego activo</strong>, 
+					aprovechando clases con buen rendimiento tanto en AFK como activamente.
+				</p>
+			</div>
+		</section>
+		
+		<section class="content-section">
+			<div class="container">
+				<div class="routes-section">
+					<h2 class="section-title">🔢 Orden recomendado de personajes</h2>
+					<div class="routes-grid">
+						{characterRoutes.map((route) => (
+							<Card class="route-card">
+								<div class="route-header">
+									<div class="route-number">{route.order}</div>
+									<div class="route-icon">{route.icon}</div>
+									<div class="route-info">
+										<h3 class="route-class">{route.class}</h3>
+										<p class="route-subclass">{route.subclass}</p>
+									</div>
+								</div>
+								<p class="route-description">{route.description}</p>
+								<div class="route-footer">
+									<Badge variant="secondary" class="route-badge">{route.role}</Badge>
+								</div>
+							</Card>
+						))}
+					</div>
+				</div>
+				
+				<div class="distribution-section">
+					<h2 class="section-title">✅ Distribución por clase</h2>
+					<div class="distribution-grid">
+						{classDistribution.map((dist) => (
+							<Card class="distribution-card">
+								<div class="distribution-header">
+									<h3 class="distribution-class">{dist.class}</h3>
+									<div class="distribution-count">{dist.count}</div>
+								</div>
+								<p class="distribution-subclasses">{dist.subclasses}</p>
+								<p class="distribution-role">{dist.role}</p>
+							</Card>
+						))}
+					</div>
+				</div>
+				
+				<div class="tips-section">
+					<h2 class="section-title">💡 Consejos según tu ritmo de juego</h2>
+					<div class="tips-grid">
+						{tips.map((tip, index) => (
+							<Card class="tip-card">
+								<div class="tip-icon">💡</div>
+								<p class="tip-text">{tip}</p>
+							</Card>
+						))}
+					</div>
+				</div>
+				
+				<div class="summary-section">
+					<Card class="summary-card">
+						<div class="summary-icon">📊</div>
+						<h2>Resumen de la Estrategia</h2>
+						<div class="summary-content">
+							<div class="summary-item">
+								<strong>Total de personajes:</strong> 10
+							</div>
+							<div class="summary-item">
+								<strong>Tiempo semanal:</strong> 10-15 horas activas
+							</div>
+							<div class="summary-item">
+								<strong>Enfoque:</strong> Clases activas con buen rendimiento AFK
+							</div>
+							<div class="summary-item">
+								<strong>Prioridad:</strong> Desbloqueo de contenido y optimización
+							</div>
+						</div>
+					</Card>
+				</div>
+			</div>
+		</section>
+	</main>
+</Layout>
+
+<style>
+	.main {
+		min-height: 100vh;
+	}
+	
+	.hero {
+		padding: 4rem 2rem;
+		text-align: center;
+		background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+		backdrop-filter: blur(10px);
+		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	}
+	
+	.hero-content {
+		max-width: 800px;
+		margin: 0 auto;
+	}
+	
+	.hero-badge {
+		display: inline-block;
+		background: rgba(255, 255, 255, 0.2);
+		border: 1px solid rgba(255, 255, 255, 0.3);
+		border-radius: 50px;
+		padding: 0.5rem 1rem;
+		margin-bottom: 2rem;
+		backdrop-filter: blur(10px);
+	}
+	
+	.badge-text {
+		color: white;
+		font-size: 0.9rem;
+		font-weight: 500;
+	}
+	
+	.hero-title {
+		font-size: clamp(2.5rem, 5vw, 4rem);
+		font-weight: 800;
+		color: white;
+		margin: 0 0 1rem 0;
+		line-height: 1.1;
+	}
+	
+	.highlight {
+		background: linear-gradient(135deg, #ff6b6b, #ffd93d);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
+	
+	.hero-description {
+		font-size: 1.25rem;
+		color: rgba(255, 255, 255, 0.9);
+		margin: 0 0 1rem 0;
+		line-height: 1.6;
+	}
+	
+	.hero-subtitle {
+		font-size: 1rem;
+		color: rgba(255, 255, 255, 0.8);
+		margin: 0;
+		line-height: 1.5;
+	}
+	
+	.content-section {
+		padding: 4rem 2rem;
+		background: rgba(255, 255, 255, 0.05);
+	}
+	
+	.container {
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+	
+	.routes-section {
+		margin-bottom: 4rem;
+	}
+	
+	.section-title {
+		font-size: 2.5rem;
+		font-weight: 700;
+		color: white;
+		text-align: center;
+		margin: 0 0 3rem 0;
+	}
+	
+	.routes-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+		gap: 2rem;
+	}
+	
+	.route-card {
+		background: rgba(255, 255, 255, 0.1) !important;
+		border: 1px solid rgba(255, 255, 255, 0.2) !important;
+		backdrop-filter: blur(10px);
+		padding: 1.5rem;
+		border-radius: 12px;
+		transition: transform 0.3s ease;
+		position: relative;
+		overflow: hidden;
+	}
+	
+	.route-card:hover {
+		transform: translateY(-5px);
+		background: rgba(255, 255, 255, 0.15) !important;
+	}
+	
+	.route-header {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		margin-bottom: 1rem;
+	}
+	
+	.route-number {
+		font-size: 1.5rem;
+		font-weight: 800;
+		color: #ff6b6b;
+		width: 40px;
+		height: 40px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: rgba(255, 107, 107, 0.1);
+		border-radius: 50%;
+		border: 2px solid rgba(255, 107, 107, 0.3);
+	}
+	
+	.route-icon {
+		font-size: 2rem;
+		width: 50px;
+		height: 50px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: rgba(255, 255, 255, 0.1);
+		border-radius: 12px;
+		border: 1px solid rgba(255, 255, 255, 0.2);
+	}
+	
+	.route-info {
+		flex: 1;
+	}
+	
+	.route-class {
+		font-size: 1.25rem;
+		font-weight: 600;
+		color: white;
+		margin: 0 0 0.25rem 0;
+	}
+	
+	.route-subclass {
+		font-size: 0.9rem;
+		color: rgba(255, 255, 255, 0.7);
+		margin: 0;
+	}
+	
+	.route-description {
+		color: rgba(255, 255, 255, 0.8);
+		margin: 0 0 1rem 0;
+		line-height: 1.5;
+	}
+	
+	.route-footer {
+		display: flex;
+		justify-content: flex-end;
+	}
+	
+	.route-badge {
+		background: rgba(255, 255, 255, 0.2) !important;
+		color: white !important;
+		border: 1px solid rgba(255, 255, 255, 0.3) !important;
+	}
+	
+	.distribution-section {
+		margin-bottom: 4rem;
+	}
+	
+	.distribution-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+		gap: 2rem;
+	}
+	
+	.distribution-card {
+		background: rgba(255, 255, 255, 0.1) !important;
+		border: 1px solid rgba(255, 255, 255, 0.2) !important;
+		backdrop-filter: blur(10px);
+		padding: 2rem;
+		border-radius: 12px;
+		text-align: center;
+		transition: transform 0.3s ease;
+	}
+	
+	.distribution-card:hover {
+		transform: translateY(-3px);
+	}
+	
+	.distribution-header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-bottom: 1rem;
+	}
+	
+	.distribution-class {
+		font-size: 1.5rem;
+		font-weight: 600;
+		color: white;
+		margin: 0;
+	}
+	
+	.distribution-count {
+		font-size: 2rem;
+		font-weight: 800;
+		color: #ffd93d;
+		width: 50px;
+		height: 50px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: rgba(255, 217, 61, 0.1);
+		border-radius: 50%;
+		border: 2px solid rgba(255, 217, 61, 0.3);
+	}
+	
+	.distribution-subclasses {
+		font-size: 1.1rem;
+		font-weight: 500;
+		color: rgba(255, 255, 255, 0.9);
+		margin: 0 0 0.5rem 0;
+	}
+	
+	.distribution-role {
+		color: rgba(255, 255, 255, 0.7);
+		margin: 0;
+		line-height: 1.4;
+	}
+	
+	.tips-section {
+		margin-bottom: 4rem;
+	}
+	
+	.tips-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 1.5rem;
+	}
+	
+	.tip-card {
+		background: rgba(255, 255, 255, 0.1) !important;
+		border: 1px solid rgba(255, 255, 255, 0.2) !important;
+		backdrop-filter: blur(10px);
+		padding: 1.5rem;
+		border-radius: 12px;
+		display: flex;
+		align-items: flex-start;
+		gap: 1rem;
+		transition: transform 0.3s ease;
+	}
+	
+	.tip-card:hover {
+		transform: translateY(-3px);
+	}
+	
+	.tip-icon {
+		font-size: 1.5rem;
+		flex-shrink: 0;
+	}
+	
+	.tip-text {
+		color: rgba(255, 255, 255, 0.8);
+		margin: 0;
+		line-height: 1.5;
+	}
+	
+	.summary-section {
+		margin-top: 4rem;
+	}
+	
+	.summary-card {
+		background: rgba(255, 255, 255, 0.1) !important;
+		border: 1px solid rgba(255, 255, 255, 0.2) !important;
+		backdrop-filter: blur(10px);
+		padding: 3rem;
+		border-radius: 12px;
+		text-align: center;
+		max-width: 600px;
+		margin: 0 auto;
+	}
+	
+	.summary-icon {
+		font-size: 4rem;
+		margin-bottom: 1rem;
+	}
+	
+	.summary-card h2 {
+		font-size: 2rem;
+		font-weight: 600;
+		color: white;
+		margin: 0 0 2rem 0;
+	}
+	
+	.summary-content {
+		display: grid;
+		gap: 1rem;
+		text-align: left;
+	}
+	
+	.summary-item {
+		color: rgba(255, 255, 255, 0.8);
+		font-size: 1.1rem;
+		padding: 0.5rem 0;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	}
+	
+	.summary-item:last-child {
+		border-bottom: none;
+	}
+	
+	.summary-item strong {
+		color: white;
+	}
+	
+	@media (max-width: 768px) {
+		.hero {
+			padding: 2rem 1rem;
+		}
+		
+		.content-section {
+			padding: 2rem 1rem;
+		}
+		
+		.routes-grid {
+			grid-template-columns: 1fr;
+		}
+		
+		.distribution-grid {
+			grid-template-columns: 1fr;
+		}
+		
+		.tips-grid {
+			grid-template-columns: 1fr;
+		}
+		
+		.route-header {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 0.5rem;
+		}
+		
+		.route-number {
+			position: absolute;
+			top: 1rem;
+			right: 1rem;
+		}
+	}
+</style>

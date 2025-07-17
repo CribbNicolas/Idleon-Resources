@@ -1,11 +1,283 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Header from '../components/Header.astro';
+import Navigation from '../components/Navigation';
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Idleon Guide - Your Complete Resource" description="Comprehensive guide for Legends of Idleon with AI-powered assistance, sources, tools, and character routes">
+	<Header />
+	
+	<main class="main">
+		<section class="hero">
+			<div class="hero-content">
+				<div class="hero-badge">
+					<span class="badge-text">✨ Powered by AI</span>
+				</div>
+				<h1 class="hero-title">
+					Your Complete <span class="highlight">Idleon</span> Resource
+				</h1>
+				<p class="hero-description">
+					Discover everything you need to master Legends of Idleon with our comprehensive guide, 
+					AI-powered assistance, and curated resources.
+				</p>
+			</div>
+		</section>
+		
+		<section class="navigation-section">
+			<div class="container">
+				<h2 class="section-title">Explore Our Resources</h2>
+				<Navigation client:load />
+			</div>
+		</section>
+		
+		<section class="features">
+			<div class="container">
+				<div class="features-grid">
+					<div class="feature">
+						<div class="feature-icon">🎮</div>
+						<h3>Game Mastery</h3>
+						<p>Complete guides and strategies for all aspects of Idleon gameplay</p>
+					</div>
+					<div class="feature">
+						<div class="feature-icon">📊</div>
+						<h3>Data-Driven</h3>
+						<p>Comprehensive spreadsheets and calculators for optimal planning</p>
+					</div>
+					<div class="feature">
+						<div class="feature-icon">🤖</div>
+						<h3>AI Assistant</h3>
+						<p>Get instant answers and personalized recommendations</p>
+					</div>
+					<div class="feature">
+						<div class="feature-icon">🚀</div>
+						<h3>Always Updated</h3>
+						<p>Stay current with the latest game updates and strategies</p>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
 </Layout>
+
+<style>
+	.main {
+		min-height: 100vh;
+	}
+	
+	.hero {
+		padding: 4rem 2rem;
+		text-align: center;
+		background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+		backdrop-filter: blur(10px);
+		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	}
+	
+	.hero-content {
+		max-width: 800px;
+		margin: 0 auto;
+	}
+	
+	.hero-badge {
+		display: inline-block;
+		background: rgba(255, 255, 255, 0.2);
+		border: 1px solid rgba(255, 255, 255, 0.3);
+		border-radius: 50px;
+		padding: 0.5rem 1rem;
+		margin-bottom: 2rem;
+		backdrop-filter: blur(10px);
+	}
+	
+	.badge-text {
+		color: white;
+		font-size: 0.9rem;
+		font-weight: 500;
+	}
+	
+	.hero-title {
+		font-size: clamp(2.5rem, 5vw, 4rem);
+		font-weight: 800;
+		color: white;
+		margin: 0 0 1.5rem 0;
+		line-height: 1.1;
+	}
+	
+	.highlight {
+		background: linear-gradient(135deg, #ff6b6b, #ffd93d);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
+	
+	.hero-description {
+		font-size: 1.25rem;
+		color: rgba(255, 255, 255, 0.9);
+		margin: 0;
+		line-height: 1.6;
+	}
+	
+	.navigation-section {
+		padding: 4rem 2rem;
+		background: rgba(255, 255, 255, 0.05);
+	}
+	
+	.container {
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+	
+	.section-title {
+		font-size: 2.5rem;
+		font-weight: 700;
+		color: white;
+		text-align: center;
+		margin: 0 0 3rem 0;
+	}
+	
+	.features {
+		padding: 4rem 2rem;
+		background: rgba(0, 0, 0, 0.1);
+	}
+	
+	.features-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		gap: 2rem;
+		margin-top: 3rem;
+	}
+	
+	.feature {
+		text-align: center;
+		padding: 2rem;
+		background: rgba(255, 255, 255, 0.1);
+		border-radius: 12px;
+		border: 1px solid rgba(255, 255, 255, 0.2);
+		backdrop-filter: blur(10px);
+		transition: transform 0.3s ease;
+	}
+	
+	.feature:hover {
+		transform: translateY(-5px);
+	}
+	
+	.feature-icon {
+		font-size: 3rem;
+		margin-bottom: 1rem;
+	}
+	
+	.feature h3 {
+		font-size: 1.5rem;
+		font-weight: 600;
+		color: white;
+		margin: 0 0 1rem 0;
+	}
+	
+	.feature p {
+		color: rgba(255, 255, 255, 0.8);
+		margin: 0;
+		line-height: 1.5;
+	}
+	
+	@media (max-width: 768px) {
+		.hero {
+			padding: 2rem 1rem;
+		}
+		
+		.navigation-section {
+			padding: 2rem 1rem;
+		}
+		
+		.features {
+			padding: 2rem 1rem;
+		}
+		
+		.features-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>
+
+<style is:global>
+	.navigation-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 2rem;
+		margin-top: 2rem;
+	}
+	
+	.navigation-card {
+		background: rgba(255, 255, 255, 0.1) !important;
+		border: 1px solid rgba(255, 255, 255, 0.2) !important;
+		backdrop-filter: blur(10px);
+		transition: all 0.3s ease;
+		padding: 1.5rem;
+		border-radius: 12px;
+	}
+	
+	.navigation-card:hover {
+		transform: translateY(-5px);
+		background: rgba(255, 255, 255, 0.15) !important;
+		border-color: rgba(255, 255, 255, 0.3) !important;
+	}
+	
+	.card-header {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		margin-bottom: 1rem;
+	}
+	
+	.card-icon {
+		font-size: 2rem;
+		width: 60px;
+		height: 60px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: rgba(255, 255, 255, 0.1);
+		border-radius: 12px;
+		border: 1px solid rgba(255, 255, 255, 0.2);
+	}
+	
+	.card-title-section {
+		flex: 1;
+	}
+	
+	.card-title {
+		font-size: 1.25rem;
+		font-weight: 600;
+		color: white;
+		margin: 0 0 0.5rem 0;
+	}
+	
+	.card-badge {
+		background: rgba(255, 255, 255, 0.2) !important;
+		color: white !important;
+		border: 1px solid rgba(255, 255, 255, 0.3) !important;
+	}
+	
+	.card-description {
+		color: rgba(255, 255, 255, 0.8);
+		margin: 0 0 1.5rem 0;
+		line-height: 1.5;
+	}
+	
+	.card-footer {
+		display: flex;
+		justify-content: flex-end;
+	}
+	
+	.card-button {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		transition: all 0.3s ease;
+	}
+	
+	.button-arrow {
+		transition: transform 0.3s ease;
+	}
+	
+	.card-button:hover .button-arrow {
+		transform: translateX(4px);
+	}
+</style>
