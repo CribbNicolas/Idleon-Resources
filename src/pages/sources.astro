@@ -65,35 +65,35 @@ const sources = [
 		<section class="content-section">
 			<div class="container">
 				<div class="intro-section">
-					<Card class="intro-card">
-						<div class="intro-icon">🎯</div>
-						<h2>Recursos Esenciales</h2>
-						<p>
+					<Card.Root class="intro-card">
+						<Card.Header class="intro-icon">🎯
+						<h2>Recursos Esenciales</h2></Card.Header>
+						<Card.Description>
 							Esta colección incluye las mejores fuentes de información para Legends of Idleon. 
 							Desde hojas de cálculo detalladas hasta guías de la comunidad, encontrarás todo lo 
 							necesario para optimizar tu experiencia de juego.
-						</p>
-					</Card>
+						</Card.Description>
+					</Card.Root>
 				</div>
 				
 				<div class="sources-grid">
 					{sources.map((source, index) => (
-						<Card class="source-card">
-							<div class="source-header">
+						<Card.Root class="source-card">
+							<Card.Header class="source-header">
 								<div class="source-icon">{source.icon}</div>
 								<div class="source-info">
 									<h3 class="source-title">{source.title}</h3>
-									<Badge variant="secondary" class="source-badge">{source.type}</Badge>
+									<Badge variant="subtle" class="source-badge">{source.type}</Badge>
 								</div>
-							</div>
-							<p class="source-description">{source.description}</p>
-							<div class="source-footer">
+							</Card.Header>
+							<Card.Description class="source-description">{source.description}</Card.Description>
+							<Card.Footer class="source-footer">
 								<Button as="a" href={source.url} target="_blank" rel="noopener noreferrer" variant="outline">
 									Abrir Recurso
 									<span class="external-icon">↗</span>
 								</Button>
-							</div>
-						</Card>
+							</Card.Footer>
+						</Card.Root>
 					))}
 				</div>
 				

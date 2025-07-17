@@ -70,44 +70,44 @@ const toolCategories = [
 		<section class="content-section">
 			<div class="container">
 				<div class="intro-section">
-					<Card class="intro-card">
-						<div class="intro-icon">⚡</div>
-						<h2>Herramientas Esenciales</h2>
-						<p>
+					<Card.Root class="intro-card">
+						<Card.Header class="intro-icon">⚡
+						<h2>Herramientas Esenciales</h2></Card.Header>
+						<Card.Description>
 							Descubre una colección completa de herramientas diseñadas para mejorar tu experiencia 
 							en Legends of Idleon. Desde calculadoras hasta planificadores, encuentra todo lo que 
 							necesitas para optimizar tu gameplay.
-						</p>
-					</Card>
+						</Card.Description>
+					</Card.Root>
 				</div>
 				
 				<div class="tools-grid">
 					{toolCategories.map((category) => (
-						<Card class="category-card">
-							<div class="category-header">
+						<Card.Root class="category-card">
+							<Card.Header class="category-header">
 								<div class="category-icon">{category.icon}</div>
 								<div class="category-info">
 									<h3 class="category-title">{category.title}</h3>
 									<p class="category-description">{category.description}</p>
 								</div>
-							</div>
+							</Card.Header>
 							
-							<div class="tools-list">
+							<Card.Body class="tools-list">
 								{category.tools.map((tool) => (
-									<div class="tool-item">
+									<Card.Root class="tool-item">
 										<h4 class="tool-name">{tool.name}</h4>
 										<p class="tool-description">{tool.description}</p>
-									</div>
+									</Card.Root>
 								))}
-							</div>
+							</Card.Body>
 							
-							<div class="category-footer">
+							<Card.Footer class="category-footer">
 								<Button variant="outline" class="category-button">
 									Explorar Herramientas
 									<span class="button-arrow">→</span>
 								</Button>
-							</div>
-						</Card>
+							</Card.Footer>
+						</Card.Root>
 					))}
 				</div>
 				
@@ -138,19 +138,19 @@ const toolCategories = [
 				</div>
 				
 				<div class="coming-soon">
-					<Card class="coming-soon-card">
-						<div class="coming-soon-icon">🚀</div>
+					<Card.Root class="coming-soon-card">
+						<Card.Header class="coming-soon-icon">🚀</Card.Header>
 						<h2>Próximamente</h2>
-						<p>
+						<Card.Description>
 							Estamos trabajando en nuevas herramientas y funcionalidades. 
 							¡Mantente atento a las actualizaciones!
-						</p>
-						<div class="coming-soon-features">
-							<Badge variant="secondary">Mobile App</Badge>
-							<Badge variant="secondary">API Integration</Badge>
-							<Badge variant="secondary">Real-time Updates</Badge>
-						</div>
-					</Card>
+						</Card.Description>
+						<Card.Footer class="coming-soon-features">
+							<Badge variant="outline">Mobile App</Badge>
+							<Badge variant="outline">API Integration</Badge>
+							<Badge variant="outline">Real-time Updates</Badge>
+						</Card.Footer>
+					</Card.Root>
 				</div>
 			</div>
 		</section>

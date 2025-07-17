@@ -133,20 +133,20 @@ const tips = [
 					<h2 class="section-title">🔢 Orden recomendado de personajes</h2>
 					<div class="routes-grid">
 						{characterRoutes.map((route) => (
-							<Card class="route-card">
-								<div class="route-header">
+							<Card.Root class="route-card">
+								<Card.Header class="route-header">
 									<div class="route-number">{route.order}</div>
 									<div class="route-icon">{route.icon}</div>
 									<div class="route-info">
 										<h3 class="route-class">{route.class}</h3>
 										<p class="route-subclass">{route.subclass}</p>
 									</div>
-								</div>
-								<p class="route-description">{route.description}</p>
-								<div class="route-footer">
-									<Badge variant="secondary" class="route-badge">{route.role}</Badge>
-								</div>
-							</Card>
+								</Card.Header>
+								<Card.Description class="route-description">{route.description}</Card.Description>
+								<Card.Footer class="route-footer">
+									<Badge variant="subtle" class="route-badge">{route.role}</Badge>
+								</Card.Footer>
+							</Card.Root>
 						))}
 					</div>
 				</div>
@@ -155,14 +155,14 @@ const tips = [
 					<h2 class="section-title">✅ Distribución por clase</h2>
 					<div class="distribution-grid">
 						{classDistribution.map((dist) => (
-							<Card class="distribution-card">
-								<div class="distribution-header">
+							<Card.Root class="distribution-card">
+								<Card.Header class="distribution-header">
 									<h3 class="distribution-class">{dist.class}</h3>
 									<div class="distribution-count">{dist.count}</div>
-								</div>
-								<p class="distribution-subclasses">{dist.subclasses}</p>
-								<p class="distribution-role">{dist.role}</p>
-							</Card>
+								</Card.Header>
+								<Card.Description class="distribution-subclasses">{dist.subclasses}</Card.Description>
+								<Card.Description class="distribution-role">{dist.role}</Card.Description>
+							</Card.Root>
 						))}
 					</div>
 				</div>
@@ -171,19 +171,19 @@ const tips = [
 					<h2 class="section-title">💡 Consejos según tu ritmo de juego</h2>
 					<div class="tips-grid">
 						{tips.map((tip, index) => (
-							<Card class="tip-card">
-								<div class="tip-icon">💡</div>
-								<p class="tip-text">{tip}</p>
-							</Card>
+							<Card.Root class="tip-card">
+								<Card.Header class="tip-icon">💡</Card.Header>
+								<Card.Description class="tip-text">{tip}</Card.Description>
+							</Card.Root>
 						))}
 					</div>
 				</div>
 				
 				<div class="summary-section">
-					<Card class="summary-card">
-						<div class="summary-icon">📊</div>
+					<Card.Root class="summary-card">
+						<Card.Header class="summary-icon">📊</Card.Header>
 						<h2>Resumen de la Estrategia</h2>
-						<div class="summary-content">
+						<Card.Description class="summary-content">
 							<div class="summary-item">
 								<strong>Total de personajes:</strong> 10
 							</div>
@@ -196,8 +196,8 @@ const tips = [
 							<div class="summary-item">
 								<strong>Prioridad:</strong> Desbloqueo de contenido y optimización
 							</div>
-						</div>
-					</Card>
+						</Card.Description>
+					</Card.Root>
 				</div>
 			</div>
 		</section>

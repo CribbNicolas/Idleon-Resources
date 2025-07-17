@@ -27,48 +27,57 @@ import { Button } from '../components/ui/button';
 		<section class="content-section">
 			<div class="container">
 				<div class="content-grid">
-					<Card class="main-card">
-						<div class="card-header">
+					<Card.Root class="main-card">
+						<Card.Header class="card-header">
 							<div class="card-icon">🎯</div>
 							<h2>Ruta de personajes</h2>
-							<Badge variant="secondary">Guía Completa</Badge>
-						</div>
-						<p class="card-description">
+							<Badge variant="subtle">Guía Completa</Badge>
+						</Card.Header>
+						<Card.Description class="card-description">
 							Descubre las mejores rutas de desarrollo para tus personajes en Legends of Idleon. 
 							Optimiza tu progreso con estrategias probadas y recomendaciones personalizadas.
-						</p>
-						<div class="card-footer">
-							<Button as="a" href="/character-routes" variant="default">
+						</Card.Description>
+						<Card.Footer class="card-footer">
+							<Button as="a" href="/character-routes" variant="solid">
 								Ver Rutas de Personajes
 								<span class="button-arrow">→</span>
 							</Button>
-						</div>
-					</Card>
+						</Card.Footer>
+					</Card.Root>
 					
 					<div class="info-cards">
-						<Card class="info-card">
-							<div class="info-icon">🧠</div>
+						<Card.Root class="info-card">
+							<Card.Header class="info-icon">🧠
 							<h3>AI-Powered Insights</h3>
+							</Card.Header>
+							<Card.Description class="info-description">
 							<p>Obtén respuestas inteligentes basadas en análisis de datos del juego</p>
-						</Card>
+							</Card.Description>
+						</Card.Root>
 						
-						<Card class="info-card">
-							<div class="info-icon">📊</div>
-							<h3>Data Analysis</h3>
+						<Card.Root class="info-card">
+							<Card.Header class="info-icon">📊
+							<h3>Data Analysis</h3></Card.Header>
+							<Card.Description class="info-description">
 							<p>Análisis profundo de mecánicas del juego y optimización</p>
-						</Card>
+							</Card.Description>
+						</Card.Root>
 						
-						<Card class="info-card">
-							<div class="info-icon">🔍</div>
-							<h3>Smart Search</h3>
+						<Card.Root class="info-card">
+							<Card.Header class="info-icon">🔍
+							<h3>Smart Search</h3></Card.Header>
+							<Card.Description class="info-description">
 							<p>Búsqueda inteligente a través de todas las fuentes disponibles</p>
-						</Card>
+							</Card.Description>
+						</Card.Root>
 						
-						<Card class="info-card">
-							<div class="info-icon">⚡</div>
-							<h3>Instant Answers</h3>
+						<Card.Root class="info-card">
+							<Card.Header class="info-icon">⚡
+							<h3>Instant Answers</h3></Card.Header>
+							<Card.Description class="info-description">
 							<p>Respuestas rápidas y precisas para todas tus preguntas</p>
-						</Card>
+							</Card.Description>
+						</Card.Root>
 					</div>
 				</div>
 				
